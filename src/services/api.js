@@ -1,7 +1,18 @@
 import axios from 'axios';
 
+const getBaseURL = () => {
+  if (import.meta.env.VITE_API_URL) return import.meta.env.VITE_API_URL;
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    return host === 'localhost' || host === '127.0.0.1'
+      ? 'http://localhost:5000/api'
+      : 'https://study-collab-backend.onrender.com/api';
+  }
+  return 'https://study-collab-backend.onrender.com/api';
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: getBaseURL(),
 });
 
 api.interceptors.request.use(
