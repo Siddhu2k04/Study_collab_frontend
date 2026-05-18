@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-white min-h-screen antialiased selection:bg-primary/30;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-surface backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  
+  .glass-card {
+    @apply glass rounded-2xl hover:bg-surface-hover transition-all duration-300;
+  }
+  
+  .neon-glow {
+    @apply shadow-[0_0_15px_rgba(45,212,191,0.5)];
+  }
+  
+  .primary-glow {
+    @apply shadow-[0_0_15px_rgba(99,102,241,0.5)];
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-neon to-secondary;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/20;
+  }
+}
